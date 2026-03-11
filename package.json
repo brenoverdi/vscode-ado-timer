@@ -1,0 +1,71 @@
+{
+  "name": "vscode-ado-timer",
+  "displayName": "ADO Timer",
+  "description": "Track time on Azure DevOps work items directly from VSCode",
+  "version": "0.1.0",
+  "publisher": "obitec",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "adoTimer.start",
+        "title": "ADO Timer: Iniciar"
+      },
+      {
+        "command": "adoTimer.stop",
+        "title": "ADO Timer: Parar e Enviar"
+      },
+      {
+        "command": "adoTimer.pause",
+        "title": "ADO Timer: Pausar"
+      },
+      {
+        "command": "adoTimer.resume",
+        "title": "ADO Timer: Retomar"
+      },
+      {
+        "command": "adoTimer.cancel",
+        "title": "ADO Timer: Cancelar"
+      },
+      {
+        "command": "adoTimer.configure",
+        "title": "ADO Timer: Configurar"
+      }
+    ],
+    "configuration": {
+      "title": "ADO Timer",
+      "properties": {
+        "adoTimer.organization": {
+          "type": "string",
+          "default": "obitec",
+          "description": "Nome da organização Azure DevOps (ex: obitec)"
+        },
+        "adoTimer.project": {
+          "type": "string",
+          "default": "",
+          "description": "Nome do projeto Azure DevOps"
+        },
+        "adoTimer.pat": {
+          "type": "string",
+          "default": "",
+          "description": "Personal Access Token do Azure DevOps"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.json",
+    "watch": "tsc -watch -p tsconfig.json",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
